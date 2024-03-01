@@ -1,8 +1,3 @@
-/*
-    ======================
-             Lib
-    ======================
-*/
 use crate::models::ListNode;
 
 mod models;

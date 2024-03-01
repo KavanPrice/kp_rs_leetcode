@@ -1,14 +1,6 @@
-/*
-    ======================
-            Tests
-    ======================
-*/
-use crate::models::ListNode;
-use crate::{add_two_numbers, two_sum};
-
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::*;
 
     #[test]
     fn test_two_sum() {
@@ -61,6 +53,78 @@ mod tests {
             assert_eq!(add_two_numbers(l1, l2), lans)
         }
 
-        {}
+        {
+            let l1_7 = ListNode { val: 9, next: None };
+            let l1_6 = ListNode {
+                val: 9,
+                next: Some(Box::new(l1_7)),
+            };
+            let l1_5 = ListNode {
+                val: 9,
+                next: Some(Box::new(l1_6)),
+            };
+            let l1_4 = ListNode {
+                val: 9,
+                next: Some(Box::new(l1_5)),
+            };
+            let l1_3 = ListNode {
+                val: 9,
+                next: Some(Box::new(l1_4)),
+            };
+            let l1_2 = ListNode {
+                val: 9,
+                next: Some(Box::new(l1_3)),
+            };
+            let l1 = Some(Box::new(ListNode {
+                val: 9,
+                next: Some(Box::new(l1_2)),
+            }));
+
+            let l2_4 = ListNode { val: 9, next: None };
+            let l2_3 = ListNode {
+                val: 9,
+                next: Some(Box::new(l2_4)),
+            };
+            let l2_2 = ListNode {
+                val: 9,
+                next: Some(Box::new(l2_3)),
+            };
+            let l2 = Some(Box::new(ListNode {
+                val: 9,
+                next: Some(Box::new(l2_2)),
+            }));
+
+            let lans8 = ListNode { val: 1, next: None };
+            let lans7 = ListNode {
+                val: 0,
+                next: Some(Box::new(lans8)),
+            };
+            let lans6 = ListNode {
+                val: 0,
+                next: Some(Box::new(lans7)),
+            };
+            let lans5 = ListNode {
+                val: 0,
+                next: Some(Box::new(lans6)),
+            };
+            let lans4 = ListNode {
+                val: 9,
+                next: Some(Box::new(lans5)),
+            };
+            let lans3 = ListNode {
+                val: 9,
+                next: Some(Box::new(lans4)),
+            };
+            let lans2 = ListNode {
+                val: 9,
+                next: Some(Box::new(lans3)),
+            };
+            let lans = Some(Box::new(ListNode {
+                val: 8,
+                next: Some(Box::new(lans2)),
+            }));
+
+            assert_eq!(add_two_numbers(l1, l2), lans);
+        }
     }
 }
