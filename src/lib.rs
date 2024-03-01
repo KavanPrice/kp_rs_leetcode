@@ -69,7 +69,7 @@ pub fn add_two_numbers(
     vec_to_node_list(&sum_vec)
 }
 
-fn length_of_longest_substring(s: String) -> i32 {
+pub fn length_of_longest_substring(s: String) -> i32 {
     let chars_vec = s.chars();
     let mut longest_length = 0;
     let mut current_length = 0;
@@ -85,4 +85,29 @@ fn length_of_longest_substring(s: String) -> i32 {
         }
     }
     longest_length
+}
+
+pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
+    let mut sorted = nums1.clone();
+    let mut nums1_pointer: usize = 0;
+    let mut nums2_pointer: usize = 0;
+
+    while nums1_pointer < sorted.len() {
+        while nums2_pointer < nums2.len() {
+            if sorted[nums1_pointer] < nums2[nums2_pointer] {
+                sorted.insert(nums1_pointer + 1, nums2[nums2_pointer]);
+                nums2_pointer += 1;
+            } else {
+                nums1_pointer += 1;
+            }
+        }
+    }
+
+    let l_median = sorted
+        .get((sorted.len() as f64 / 2_f64).floor() as usize)
+        .unwrap();
+    let u_median = sorted
+        .get((sorted.len() as f64 / 2_f64).ceil() as usize)
+        .unwrap();
+    (*l_median as f64 + *u_median as f64) / 2f64
 }
