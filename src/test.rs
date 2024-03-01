@@ -127,4 +127,11 @@ mod tests {
             assert_eq!(add_two_numbers(l1, l2), lans);
         }
     }
+
+    #[test]
+    fn test_length_of_longest_substring() {
+        assert_eq!(length_of_longest_substring("abcabcbb".into()), 3);
+        assert_eq!(length_of_longest_substring("bbbbb".into()), 1);
+        assert_eq!(length_of_longest_substring("pwwkew".into()), 3);
+    }
 }

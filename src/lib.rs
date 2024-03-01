@@ -1,4 +1,5 @@
 use crate::models::ListNode;
+use std::cmp::max;
 
 mod models;
 mod test;
@@ -66,4 +67,22 @@ pub fn add_two_numbers(
     let sum = num1 + num2;
     let sum_vec = i32_to_vec(sum);
     vec_to_node_list(&sum_vec)
+}
+
+fn length_of_longest_substring(s: String) -> i32 {
+    let chars_vec = s.chars();
+    let mut longest_length = 0;
+    let mut current_length = 0;
+    let mut past_chars: Vec<char> = vec![];
+
+    for char in chars_vec {
+        if past_chars.contains(&char) {
+            longest_length = max(longest_length, current_length);
+            current_length = 1;
+        } else {
+            current_length += 1;
+            past_chars.push(char);
+        }
+    }
+    longest_length
 }
