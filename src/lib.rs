@@ -111,3 +111,25 @@ pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         .unwrap();
     (*l_median as f64 + *u_median as f64) / 2f64
 }
+
+pub fn longest_palindrome(s: String) -> String {
+    trait PossiblePalindrome {
+        fn is_palindrome(&self) -> bool;
+    }
+    impl PossiblePalindrome for String {
+        fn is_palindrome(&self) -> bool {
+            self == &self.chars().rev().collect::<String>()
+        }
+    }
+
+    let mut longest_palindrome: String = "".into();
+    for i in 0..s.len()-1 {
+        for j in i..s.len() {
+            let substring = s[i..j].to_string();
+            if substring.is_palindrome() && substring.len() > longest_palindrome.len() {
+                longest_palindrome = substring;
+            }
+        }
+    }
+    longest_palindrome
+}

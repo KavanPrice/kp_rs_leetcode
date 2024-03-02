@@ -140,4 +140,10 @@ mod tests {
         assert_eq!(find_median_sorted_arrays(vec![1, 3], vec![2]), 2f64);
         assert_eq!(find_median_sorted_arrays(vec![1, 2], vec![3, 4]), 2.5);
     }
+
+    #[test]
+    fn test_longest_palindrome() {
+        assert_eq!(longest_palindrome("babad".into()), "bab");
+        assert_eq!(longest_palindrome("cbbd".into()), "bb");
+    }
 }
